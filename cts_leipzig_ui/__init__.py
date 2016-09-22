@@ -12,8 +12,7 @@ class AperireUI(PluginPrototype):
     """
     HAS_AUGMENT_RENDER = False
     TEMPLATES = {
-        "main": resource_filename("aperire_ui", "data/templates/main"),
-        "arethusa": resource_filename("aperire_ui", "data/templates/arethusa")
+        "main": resource_filename("cts_leipzig_ui", "data/templates/main")
     }
-    CSS = [resource_filename("aperire_ui","data/assets/css/theme-ext.css")]
+    CSS = [resource_filename("cts_leipzig_ui","data/assets/css/theme-ext.css")]
 

@@ -11,7 +11,7 @@ setup(
     description='Aperire UI for Nemo',
     test_suite="tests",
     install_requires=[
-        "flask_nemo>=1.0.0b1"
+        "flask_nemo>=1.0.0b3"
     ],
     tests_require=[
         "capitains_nautilus>=0.0.5"
