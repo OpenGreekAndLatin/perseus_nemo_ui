@@ -15,4 +15,7 @@ class CTSLeipzigUI(PluginPrototype):
         "main": resource_filename("cts_leipzig_ui", "data/templates/main")
     }
     CSS = [resource_filename("cts_leipzig_ui","data/assets/css/theme-ext.css")]
+    STATICS = [
+        resource_filename("cts_leipzig_ui","data/assets/images/perseus.png")
+	]
 
