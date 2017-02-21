@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='aperire_ui',
+    name='cts_leipzig_ui',
     version="0.0.1",
     packages=find_packages(exclude=["examples", "tests"]),
-    url='https://github.com/ponteineptique/perseus_nemo_ui',
+    url='https://github.com/OpenGreekAndLatin/cts_leipzig_ui',
     license='GNU GPL',
     author='Bridget Almas, Thibault Clérice',
     author_email='leponteineptique@gmail.com',
