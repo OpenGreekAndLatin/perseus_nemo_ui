@@ -20,7 +20,8 @@ $(document).ready(function($) {
       }
     });
 
-    $("#fullsearch").on("typeahead:select", function (event, data) {
-        console.log(event, data);
+    $('#fullsearch').bind('typeahead:select', function(ev, suggestion) {
+        ev.preventDefault();
+       window.location = suggestion.uri;
     });
 });
