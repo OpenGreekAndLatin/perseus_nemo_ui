@@ -5,6 +5,7 @@
 .idea
 venv
 venv2
+env
 
 # Setuptools distribution folder.
 /dist/
