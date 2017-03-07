@@ -30,6 +30,15 @@ class CTSLeipzigUI(PluginPrototype):
     ]
 
     CACHED = ["r_typeahead_json"]
+    HAS_AUGMENT_RENDER = True
+
+    def __init__(self, GTrackCode=None, *args, **kwargs):
+        super(CTSLeipzigUI, self).__init__(*args, **kwargs)
+        self.GTrackCode = GTrackCode
+
+    def render(self, **kwargs):
+        kwargs["gtrack"] = self.GTrackCode
+        return kwargs
 
     def r_typeahead_json(self):
         """ List of resource for typeahead

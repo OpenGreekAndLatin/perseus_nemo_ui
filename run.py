@@ -12,7 +12,7 @@ nemo = Nemo(
     base_url="",
     resolver=NautilusDummy,
     chunker={"default": lambda x, y: level_grouper(x, y, groupby=30)},
-    plugins=[CTSLeipzigUI()],
+    plugins=[CTSLeipzigUI("HERE")],
     transform={
         "default": resource_filename("cts_leipzig_ui", "data/assets/static/xslt/epidocShort.xsl")
     },

@@ -24,7 +24,7 @@ class NemoTestBrowse(TestCase):
             base_url="",
             resolver=NautilusDummy,
             chunker={"default": lambda x, y: level_grouper(x, y, groupby=30)},
-            plugins=[CTSLeipzigUI()],
+            plugins=[CTSLeipzigUI("123google")],
             transform={
                 "default": resource_filename("cts_leipzig_ui", "data/assets/static/xslt/epidocShort.xsl")
             },
@@ -275,4 +275,12 @@ class NemoTestBrowse(TestCase):
         self.assertIn(
             'et ibi est lapis ille', query_data,
             "Text should be visible"
+        )
+
+    def test_assert_analytics(self):
+        """ Test that passage page contains what is relevant : text and next passages"""
+        query_data = self.client.get("/text/urn:cts:latinLit:stoa0329c.stoa001.opp-lat1/passage/1-8").data.decode()
+        self.assertIn(
+            "ga('create', '123google', 'auto');", query_data,
+            "Google Analytics ID should be shown"
         )
