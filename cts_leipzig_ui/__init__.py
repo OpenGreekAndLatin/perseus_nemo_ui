@@ -18,8 +18,8 @@ class CTSLeipzigUI(PluginPrototype):
     }
     CSS = [resource_filename("cts_leipzig_ui", "data/assets/css/theme-ext.css")]
     JS = [
-        "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js",
         resource_filename("cts_leipzig_ui", "data/assets/js/typeahead.bundle.min.js"),
+        resource_filename("cts_leipzig_ui", "data/assets/js/autocomplete.bundle.min.js"),
         resource_filename("cts_leipzig_ui", "data/assets/js/menu.js")
     ]
     STATICS = [
@@ -32,6 +32,9 @@ class CTSLeipzigUI(PluginPrototype):
     CACHED = ["r_typeahead_json"]
 
     def r_typeahead_json(self):
+        """ List of resource for typeahead
+        """
+
         locale = self.nemo.get_locale()
         collection = self.nemo.resolver.getMetadata()
         data = []
@@ -47,7 +50,7 @@ class CTSLeipzigUI(PluginPrototype):
                 "value": title + ", " + parents + desc,
                 "title": title,
                 "parents": parents,
-                "description": desc,
+                #"description": desc,
                 "uri": url_for(".r_first_passage", objectId=str(collection.id))
             })
         return jsonify(data)

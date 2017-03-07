@@ -7,21 +7,31 @@ $(document).ready(function($) {
       prefetch: $("#fullsearch").attr("data-target")
     });
 
-    $("#fullsearch").typeahead({
-      minLength: 3,
-      highlight: true
-    },
-    {
-      name: 'my-dataset',
-      source: texts_authors,
-      templates: {
-        empty: '<div class="empty-message">0 Results</div>',
-        suggestion: Handlebars.compile('<div><strong>{{title}}</strong><div>{{parents}}<br /><small>{{description}}</small></div></div>')
+    $("#fullsearch").autocomplete(
+      {
+        minLength: 3,
+        highlight: true,
+        hint: false
+      },
+      {
+        name: 'collections',
+        source: function (query, callback) {
+              return texts_authors.search(
+                  query,
+                  function(datum) { callback(datum); },
+                  function (datum) { callback([]); }
+              );
+        },
+        displayKey: function(suggestion) { return suggestion.title; },
+        templates: {
+            empty: '<div class="empty-message">'+$("#fullsearch").attr("data-noresult")+'</div>',
+            suggestion: function(s) {
+                return '<div><strong><a href="'+s.uri+'">'+s.title+'</a></strong><div>'+s.parents+'</small></div></div>';
+            }
+        }
       }
-    });
-
-    $('#fullsearch').bind('typeahead:select', function(ev, suggestion) {
-        ev.preventDefault();
+    ).on('autocomplete:selected', function(event, suggestion, dataset) {
+       event.preventDefault();
        window.location = suggestion.uri;
     });
 });

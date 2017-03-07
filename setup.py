@@ -8,13 +8,13 @@ setup(
     license='GNU GPL',
     author='Bridget Almas, Thibault Clérice',
     author_email='leponteineptique@gmail.com',
-    description='Aperire UI for Nemo',
+    description='CapiTainS Leipzig UI for Nemo',
     test_suite="tests",
     install_requires=[
         "flask_nemo>=1.0.0b5"
     ],
     tests_require=[
-        "capitains_nautilus>=0.0.5"
+        "capitains_nautilus>=1.0.0b6"
     ],
     include_package_data=True,
     zip_safe=False
