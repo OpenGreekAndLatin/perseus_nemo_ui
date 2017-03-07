@@ -19,7 +19,7 @@ class CTSLeipzigUI(PluginPrototype):
     CSS = [resource_filename("cts_leipzig_ui", "data/assets/css/theme-ext.css")]
     JS = [
         resource_filename("cts_leipzig_ui", "data/assets/js/bloodhound.min.js"),
-        resource_filename("cts_leipzig_ui", "data/assets/js/autocomplete.bundle.min.js"),
+        resource_filename("cts_leipzig_ui", "data/assets/js/autocomplete.min.js"),
         resource_filename("cts_leipzig_ui", "data/assets/js/menu.js")
     ]
     STATICS = [
