@@ -68,7 +68,7 @@ class CTSLeipzigUI(PluginPrototype):
 
 def scheme_grouper(text, getreffs):
     level = len(text.citation)
-    groupby = 30
+    groupby = 5
     types = [citation.name for citation in text.citation]
 
     if types == ["book", "poem", "line"]:
@@ -83,4 +83,6 @@ def scheme_grouper(text, getreffs):
         level, groupby = 1, 30
     elif types == ["chapter", "section"]:
         level, groupby = 2, 2
+    elif "line" in types:
+        groupby = 30
     return level_grouper(text, getreffs, level, groupby)
