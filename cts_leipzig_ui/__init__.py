@@ -3,6 +3,7 @@
 from flask_nemo.plugin import PluginPrototype
 from pkg_resources import resource_filename
 from flask import jsonify, url_for
+from flask_nemo.chunker import level_grouper
 
 
 class CTSLeipzigUI(PluginPrototype):
@@ -63,3 +64,23 @@ class CTSLeipzigUI(PluginPrototype):
                 "uri": url_for(".r_first_passage", objectId=str(collection.id))
             })
         return jsonify(data)
+
+
+def scheme_grouper(text, getreffs):
+    level = len(text.citation)
+    groupby = 30
+    types = [citation.name for citation in text.citation]
+
+    if types == ["book", "poem", "line"]:
+        level, groupby = 2, 1
+    elif types == ["book", "line"]:
+        level, groupby = 2, 30
+    elif types == ["book", "chapter"]:
+        level, groupby = 2, 1
+    elif types == ["book"]:
+        level, groupby = 1, 1
+    elif types == ["line"]:
+        level, groupby = 1, 30
+    elif types == ["chapter", "section"]:
+        level, groupby = 2, 2
+    return level_grouper(text, getreffs, level, groupby)
