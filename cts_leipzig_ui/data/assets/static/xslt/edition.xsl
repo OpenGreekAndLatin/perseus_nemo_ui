@@ -37,6 +37,7 @@
             <xsl:attribute name="class">
                 <xsl:value-of select="@subtype" />
             </xsl:attribute>
+            <xsl:apply-templates select="@urn" />
             <xsl:if test="./@sameAs">
                <xsl:element name="p">
                    <xsl:element name="small">
@@ -66,7 +67,15 @@
     
     <xsl:template match="t:l">
         <xsl:element name="li">
+            <xsl:apply-templates select="@urn" />
             <xsl:attribute name="value"><xsl:value-of select="@n"/></xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="t:lg">
+        <xsl:element name="ol">
+            <xsl:apply-templates select="@urn" />
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -82,6 +91,7 @@
     
     <xsl:template match="t:p">
         <p>
+            <xsl:apply-templates select="@urn" />
             <xsl:apply-templates/>
         </p>
     </xsl:template>
@@ -117,6 +127,12 @@
     </xsl:template>
     
     <xsl:template match="t:head">
+        <h3 class="head"><xsl:apply-templates />
+            <xsl:apply-templates select="@urn" /></h3>
+    </xsl:template>
+    
+    <xsl:template match="@urn">
+        <xsl:attribute name="data-urn"><xsl:value-of select="."/>/></xsl:attribute>
     </xsl:template>
     
     <xsl:template match="t:sp">
@@ -124,9 +140,16 @@
             <xsl:if test="./t:speaker">
                 <em><xsl:value-of select="./t:speaker/text()" /></em>
             </xsl:if>
-            <ol>
-                <xsl:apply-templates select="./t:l"/>
-            </ol>
+            <xsl:choose>
+                <xsl:when test="./t:lg">
+                    <xsl:apply-templates select="./t:lg" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <ol>
+                        <xsl:apply-templates select="./t:l"/>
+                    </ol>
+                </xsl:otherwise>
+            </xsl:choose>
         </section>
     </xsl:template>
     
