@@ -21,6 +21,44 @@
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
+
+    <xsl:template match="//t:div[@type = 'translation']">
+    <div>
+      <xsl:attribute name="id">
+        <xsl:text>translation</xsl:text>
+        <xsl:if test="@xml:lang"><xsl:text>_</xsl:text></xsl:if>
+        <xsl:value-of select="@xml:lang"/>
+      </xsl:attribute>
+      
+      <xsl:attribute name="class">
+        <xsl:text>translation lang_</xsl:text>
+        <xsl:value-of select="@xml:lang"/>
+      </xsl:attribute>
+      
+      
+      <xsl:apply-templates/>
+    
+    </div>
+  </xsl:template>
+
+    <xsl:template match="//t:div[@type = 'commentary']">
+    <div>
+      <xsl:attribute name="id">
+        <xsl:text>commentary</xsl:text>
+        <xsl:if test="@xml:lang"><xsl:text>_</xsl:text></xsl:if>
+        <xsl:value-of select="@xml:lang"/>
+      </xsl:attribute>
+      
+      <xsl:attribute name="class">
+        <xsl:text>commentary lang_</xsl:text>
+        <xsl:value-of select="@xml:lang"/>
+      </xsl:attribute>
+      
+      
+      <xsl:apply-templates/>
+    
+    </div>
+  </xsl:template>
     
     <xsl:template match="t:div[@type = 'edition']">
         <div id="edition">
@@ -143,6 +181,9 @@
             <xsl:choose>
                 <xsl:when test="./t:lg">
                     <xsl:apply-templates select="./t:lg" />
+                </xsl:when>
+                <xsl:when test="./t:p">
+                    <xsl:apply-templates select="./t:p" />
                 </xsl:when>
                 <xsl:otherwise>
                     <ol>

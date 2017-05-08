@@ -13,10 +13,11 @@ But they are away to get the Epidoc (currently only the edition and the translat
   
   <!-- edition -->
   <xsl:include href="edition.xsl" />
-  <xsl:include href="translation.xsl" />  
 
-  <!-- others: just remove for now -->
-  <xsl:include href="teiHeader.xsl" />
-  <xsl:include href="facsimile.xsl" />
-  <xsl:include href="text.xsl" />
+  <!--
+  others: just remove for now
+	  <xsl:include href="teiHeader.xsl" />
+	  <xsl:include href="facsimile.xsl" />
+	  <xsl:include href="text.xsl" />
+	-->
 </xsl:stylesheet>
