@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='cts_leipzig_ui',
-    version="0.0.1",
+    version="0.0.2",
     packages=find_packages(exclude=["examples", "tests"]),
     url='https://github.com/OpenGreekAndLatin/cts_leipzig_ui',
     license='GNU GPL',
