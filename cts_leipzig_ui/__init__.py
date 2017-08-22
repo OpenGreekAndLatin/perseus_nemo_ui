@@ -71,6 +71,8 @@ def scheme_grouper(text, getreffs):
     groupby = 5
     types = [citation.name for citation in text.citation]
 
+    if 'word' in types:
+        types = types[:types.index("word")]
     if types == ["book", "poem", "line"]:
         level, groupby = 2, 1
     elif types == ["book", "line"]:
@@ -83,6 +85,10 @@ def scheme_grouper(text, getreffs):
         level, groupby = 1, 30
     elif types == ["chapter", "section"]:
         level, groupby = 2, 2
+    elif types == ["chapter", "mishnah"]:
+        level, groupby = 2, 1
+    elif types == ["chapter", "verse"]:
+        level, groupby = 2, 1
     elif "line" in types:
         groupby = 30
     return level_grouper(text, getreffs, level, groupby)

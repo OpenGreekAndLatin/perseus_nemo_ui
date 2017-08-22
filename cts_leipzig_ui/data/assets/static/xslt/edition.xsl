@@ -52,7 +52,7 @@
         <xsl:element name="span">
             <xsl:attribute name="class">
                 <xsl:text>pc_</xsl:text>
-                <xsl:value-of select="@unit"/>
+                <xsl:value-of select="@unit|@type"/>
             </xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
@@ -226,7 +226,13 @@
     </xsl:template>
     
     <xsl:template match="t:ref">
-        <span class="note"><xsl:value-of select="." /><a href="#">[*]</a><span class="note-content"><xsl:text>(</xsl:text><xsl:value-of select="@target" /><xsl:text>)</xsl:text></span></span>
+        <a class="urn">
+            <xsl:attribute name="href">
+                <xsl:value-of select="@target"/>
+            </xsl:attribute>
+            <xsl:value-of select="." />
+            [*]
+        </a>
     </xsl:template>
     
     <xsl:template match="t:choice">

@@ -50,5 +50,18 @@
     {{ show_passage(text_passage, navigation=nav(), header=header_passage(), footer=default_footer()) }}
 {% endblock %}
 
+{% block additionalscript %}
+{{ super() }}
+<script type="text/javascript">
+  $("a.urn").each(function() {
+		var urn = $(this).attr("href").split(":"),
+      passage_id = urn.slice(length-1).join(":"),
+      text_id = urn.slice(0, length-1).join(":");
+    var passage_route = "{{url_for('.r_passage', objectId='--text_id--', subreference='--passage_id--') }}".replace("--text_id--", text_id).replace('--passage_id--', passage_id);
+		$(this).attr("href", passage_route);
+  });
+</script>
+{% endblock %}
+
 {% block metadata %}
 {% endblock %}
