@@ -110,7 +110,7 @@ def dispatchfFarsiLit(collection, path=None, **kwargs):
 
 NautilusDummy = CtsCapitainsLocalResolver(
     resource=[
-        "/home/matt/ancJewLitCTS",
+        "./tests/test_data/nautilus/hebLit",
         "./tests/test_data/nautilus/farsiLit",
         "./tests/test_data/nautilus/latinLit"
     ],
