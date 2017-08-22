@@ -24,7 +24,7 @@
   text-align:right;
 }
 
-.lang_heb span.w::after {
+.lang_heb span.w::before {
   content:" ";
 }
 

@@ -47,6 +47,16 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
+    <xsl:template match="t:pc">
+        <xsl:element name="span">
+            <xsl:attribute name="class">
+                <xsl:text>pc_</xsl:text>
+                <xsl:value-of select="@unit"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
 
     <xsl:template match="//t:div[@type = 'commentary']">
     <div>
@@ -213,6 +223,10 @@
     
     <xsl:template match="t:note">
         <span class="note"><a href="#">[*]</a><span class="note-content"><xsl:text>(</xsl:text><xsl:value-of select="." /><xsl:text>)</xsl:text></span></span>
+    </xsl:template>
+    
+    <xsl:template match="t:ref">
+        <span class="note"><xsl:value-of select="." /><a href="#">[*]</a><span class="note-content"><xsl:text>(</xsl:text><xsl:value-of select="@target" /><xsl:text>)</xsl:text></span></span>
     </xsl:template>
     
     <xsl:template match="t:choice">
