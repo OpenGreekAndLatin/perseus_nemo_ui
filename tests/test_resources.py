@@ -82,6 +82,9 @@ gc = XmlCtsTextInventoryMetadata("urn:perseus:greekLit")
 gc.parent = tic
 gc.set_label("Ancient Greek", "eng")
 gc.set_label("Grec Ancien", "fre")
+heb = XmlCtsTextInventoryMetadata("urn:perseus:ancJewLit")
+heb.parent = tic
+heb.set_label("Hebrew", "eng")
 
 dispatcher = CollectionDispatcher(tic)
 
@@ -99,8 +102,15 @@ def dispatchfFarsiLit(collection, path=None, **kwargs):
         return True
     return False
 
+@dispatcher.inventory("urn:perseus:ancJewLit")
+def dispatchfFarsiLit(collection, path=None, **kwargs):
+    if collection.id.startswith("urn:cts:ancJewLit:"):
+        return True
+    return False
+
 NautilusDummy = CtsCapitainsLocalResolver(
     resource=[
+        "/home/matt/ancJewLitCTS",
         "./tests/test_data/nautilus/farsiLit",
         "./tests/test_data/nautilus/latinLit"
     ],

@@ -15,7 +15,7 @@ nemo = Nemo(
     plugins=[CTSLeipzigUI("HERE")],
     transform={
         "default": resource_filename("cts_leipzig_ui", "data/assets/static/xslt/epidocShort.xsl")
-    },
+    }
 )
 
 if __name__ == "__main__":

@@ -40,6 +40,13 @@
     
     </div>
   </xsl:template>
+    
+    <xsl:template match="t:w">
+        <xsl:element name="span">
+            <xsl:attribute name="class">w</xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
 
     <xsl:template match="//t:div[@type = 'commentary']">
     <div>
@@ -66,6 +73,7 @@
                 <xsl:text>edition lang_</xsl:text>
                 <xsl:value-of select="@xml:lang"/>
             </xsl:attribute>
+            <xsl:attribute name="data-lang"><xsl:value-of select="./@xml:lang"/></xsl:attribute>
             <xsl:apply-templates/>
         </div>
     </xsl:template>
