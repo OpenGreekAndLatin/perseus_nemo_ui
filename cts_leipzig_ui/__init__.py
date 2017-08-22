@@ -73,7 +73,7 @@ def scheme_grouper(text, getreffs):
 
     if 'word' in types:
         types = types[:types.index("word")]
-    if str(text.id) == "urn:cts:latinLit:stoa0040.stoa062.opp-lat1"
+    if str(text.id) == "urn:cts:latinLit:stoa0040.stoa062.opp-lat1":
         level, groupby = 1, 2
     elif types == ["book", "poem", "line"]:
         level, groupby = 2, 1
