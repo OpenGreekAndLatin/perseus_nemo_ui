@@ -84,6 +84,11 @@
                 <xsl:value-of select="@xml:lang"/>
             </xsl:attribute>
             <xsl:attribute name="data-lang"><xsl:value-of select="./@xml:lang"/></xsl:attribute>
+            <xsl:if test="@xml:lang = 'heb'">
+                <xsl:attribute name="dir">
+                    <xsl:text>rtl</xsl:text>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:apply-templates/>
         </div>
     </xsl:template>
